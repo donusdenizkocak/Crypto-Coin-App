@@ -23,6 +23,23 @@ const getCoinDataFromApi= async() =>{
             'x-access-token': apiKey,
         },
     };
+try {
+    const response=await axios(url,options)
+console.log(response.data.data.coins[0])
+//obj. dest.
+const {price,name,change,iconUrl,symbol} =response.data.data.coins[0]
 
+//coin control
+const coinNameSpans=coinList.querySelectorAll("h2 span")
+
+//filter vs map(array)
+if(coinNameSpans.length > 0){
+    const filteredArray = [...coinNameSpans].filter(span=> span.innerText == name)
+    console.log(filteredArray)
+}
+
+} catch (error) {
+    console.log(error)
+}
     
 }
