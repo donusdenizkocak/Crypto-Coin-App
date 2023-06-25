@@ -36,7 +36,28 @@ const coinNameSpans=coinList.querySelectorAll("h2 span")
 if(coinNameSpans.length > 0){
     const filteredArray = [...coinNameSpans].filter(span=> span.innerText == name)
     console.log(filteredArray)
+    if(filteredArray.length >0){
+     msgSpan.innerText = `You already know the data for ${name}, Please search for another coin 😉`
+     setTimeout(()=> {
+        msgSpan.innerText="";
+     }, 3000)
+     return;
+    }
 }
+
+//continue xxx return
+const createdLi=document.createElement("li");
+createdLi.classList.add("coin");
+createdLi.innerHTML=`
+<h2 class="coin-name" data-name=${name}>
+<span>${name}</span>
+<sup>${symbol}</sup>
+</h2>
+
+`
+
+
+
 
 } catch (error) {
     console.log(error)
