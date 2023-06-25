@@ -67,14 +67,20 @@ createdLi.innerHTML=`
 <span>${change}</span>
 </figcaption>
 </figure>
+<span class="remove-icon">
+<i class="fas fa-window-close" style="color:red"></i>
+</span>`;
+//append(sona nesne ekler) vs prepend(basa nesne ekler)  appendChild(childrenların sonuna eleman ekler)
 
-`
-
-
-
-
+coinList.prepend(createdLi)
+//remove function
+createdLi.querySelector(".remove-icon").addEventListener("click", ()=>{
+createdLi.remove();
+})
 } catch (error) {
-    console.log(error)
-}
-    
+    msgSpan.innerText= `Coin not found!`;
+    setTimeout(()=>{
+        msgSpan.innerText="";
+    }, 3000);
+  }   
 }
