@@ -23,6 +23,12 @@ const getCoinDataFromApi= async() =>{
             'x-access-token': apiKey,
         },
     };
+
+    //fetch ve axios
+
+    // const response= await fetch(url,options)
+    // .then((response) => response.json)
+    // .then((result) => console.log(result.data.coins[0]))
 try {
     const response=await axios(url,options)
 console.log(response.data.data.coins[0])
@@ -53,6 +59,14 @@ createdLi.innerHTML=`
 <span>${name}</span>
 <sup>${symbol}</sup>
 </h2>
+<div class="coin-temp"> $${Number(price).toFixed(6)}</div>
+<figure>
+<img class="coin-icon" src=${iconUrl}>
+<figcaption style='color:${change < 0 ? "red" :"green"}'>
+<span><i class="fa-solid fa-chart-line"></i></span>
+<span>${change}</span>
+</figcaption>
+</figure>
 
 `
 
